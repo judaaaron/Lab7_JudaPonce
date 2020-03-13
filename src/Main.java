@@ -20,6 +20,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         setTitle(" Laboratorio 7");
         this.setLocationRelativeTo(null);
+        br = new administrarBarra(pg_registro);
 
     }
 
@@ -50,7 +51,25 @@ public class Main extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         bt_registrarArtista = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        pg_registro = new javax.swing.JProgressBar();
         jLabel5 = new javax.swing.JLabel();
+        jd_admin = new javax.swing.JDialog();
+        bt_removeArtistas = new javax.swing.JButton();
+        bt_removeUsuarios = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jd_artistasAdmin = new javax.swing.JDialog();
+        jd_usuarioRegistrar = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        tf_userUsuario = new javax.swing.JTextField();
+        tf_contraUsuario = new javax.swing.JTextField();
+        tf_nombreUsuario = new javax.swing.JTextField();
+        tf_edadUsuario = new javax.swing.JTextField();
+        bt_registrarUsuario = new javax.swing.JButton();
+        pg_usuario = new javax.swing.JProgressBar();
+        jLabel12 = new javax.swing.JLabel();
         bt_ingresare = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -120,7 +139,71 @@ public class Main extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jButton4.setText("Regresar");
         jd_Artista.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 100, 30));
+
+        pg_registro.setMaximum(5);
+        jd_Artista.getContentPane().add(pg_registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 240, 20));
         jd_Artista.getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 400));
+
+        jd_admin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        bt_removeArtistas.setText("Eliminar Artistas");
+        bt_removeArtistas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_removeArtistasMouseClicked(evt);
+            }
+        });
+        jd_admin.getContentPane().add(bt_removeArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
+
+        bt_removeUsuarios.setText("Eliminar Usuarios");
+        jd_admin.getContentPane().add(bt_removeUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
+        jd_admin.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 430));
+
+        javax.swing.GroupLayout jd_artistasAdminLayout = new javax.swing.GroupLayout(jd_artistasAdmin.getContentPane());
+        jd_artistasAdmin.getContentPane().setLayout(jd_artistasAdminLayout);
+        jd_artistasAdminLayout.setHorizontalGroup(
+            jd_artistasAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jd_artistasAdminLayout.setVerticalGroup(
+            jd_artistasAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        jd_usuarioRegistrar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel13.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel13.setText("Usuario");
+        jd_usuarioRegistrar.getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel14.setText("Contraseña");
+        jd_usuarioRegistrar.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel15.setText("Nombre");
+        jd_usuarioRegistrar.getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel16.setText("Edad");
+        jd_usuarioRegistrar.getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 50, -1));
+        jd_usuarioRegistrar.getContentPane().add(tf_userUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 100, -1));
+        jd_usuarioRegistrar.getContentPane().add(tf_contraUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 100, -1));
+        jd_usuarioRegistrar.getContentPane().add(tf_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 100, -1));
+        jd_usuarioRegistrar.getContentPane().add(tf_edadUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 100, -1));
+
+        bt_registrarUsuario.setText("Registrar");
+        bt_registrarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_registrarUsuarioMouseClicked(evt);
+            }
+        });
+        jd_usuarioRegistrar.getContentPane().add(bt_registrarUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 280, 170, 30));
+        jd_usuarioRegistrar.getContentPane().add(pg_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 150, 20));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
+        jd_usuarioRegistrar.getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 510));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -176,7 +259,8 @@ public class Main extends javax.swing.JFrame {
             ap.cargarArchivoBandas();
             ap.setBanda(o);
             ap.escribirArchivoBandas();
-            JOptionPane.showMessageDialog(this, "Banda guardado exitosamente");
+            br.start();
+
             tf_userArtista.setText("");
             tf_contraArtista.setText("");
             tf_nombreArtista.setText("");
@@ -191,14 +275,13 @@ public class Main extends javax.swing.JFrame {
             ss.cargarArchivoSolistas();
             ss.setySolista(p);
             ss.escribirArchivoSolistas();
-            JOptionPane.showMessageDialog(this, "Solista guardado exitosamente");
+            br.start();
             tf_userArtista.setText("");
             tf_contraArtista.setText("");
             tf_nombreArtista.setText("");
             tf_generoArtista.setText("");
 
-        }
-        if (cb_artistas.getSelectedIndex() == 0) {
+        } else if (cb_artistas.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Opcion incorrecta");
         }
 
@@ -220,9 +303,13 @@ public class Main extends javax.swing.JFrame {
         ap.cargarArchivoBandas();
         adminSolistas ss = new adminSolistas("./solistas.cbm");
         ss.cargarArchivoSolistas();
+        adminUsuarios pp = new adminUsuarios("./usuarios.cbm");
+        pp.cargarArchivoUsuario();
+
         for (int i = 0; i < ap.getBands().size(); i++) {
             if (ap.getBands().get(i).getUsuario().equals(userr) && ap.getBands().get(i).getContraseña().equals(pass)) {
                 JOptionPane.showMessageDialog(this, " Es una banda");
+                break;
             }
 
         }
@@ -230,11 +317,46 @@ public class Main extends javax.swing.JFrame {
 
             if (ss.getSolis().get(i).getUsuario().equals(userr) && ss.getSolis().get(i).getContraseña().equals(pass)) {
                 JOptionPane.showMessageDialog(this, " Es un solista");
+                break;
             }
         }
-    
+
+        for (int i = 0; i < usiss.size(); i++) {
+            if (pp.getUsis().get(i).getUsuario().equals(userr) && pp.getUsis().get(i).getPassword().equals(pass)) {
+                JOptionPane.showMessageDialog(this, " Es una banda");
+                break;
+            }
+
+        }
+        if (userr.equals("leobanegas") && pass.equals("99")) {
+            jd_admin.pack();
+            jd_admin.setModal(true);
+            jd_admin.setLocationRelativeTo(this);
+            jd_admin.setVisible(true);
+
+        }
+
 
     }//GEN-LAST:event_bt_ingresareMouseClicked
+
+    private void bt_removeArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_removeArtistasMouseClicked
+        jd_admin.setVisible(false);
+        jd_artistasAdmin.pack();
+        jd_artistasAdmin.setModal(true);
+        jd_artistasAdmin.setLocationRelativeTo(this);
+        jd_artistasAdmin.setVisible(true);
+    }//GEN-LAST:event_bt_removeArtistasMouseClicked
+
+    private void bt_registrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarUsuarioMouseClicked
+        int edad = Integer.parseInt(tf_edadUsuario.getText());
+        Usuarios u = new Usuarios(tf_userUsuario.getText(), tf_contraUsuario.getText(), tf_nombreUsuario.getText(), tf_edadUsuario.getText());
+        bands.add(new Bandas(edad, tf_userArtista.getText(), tf_contraArtista.getText(), tf_nombreArtista.getText(), tf_generoArtista.getText()));
+        adminUsuarios pp = new adminUsuarios("./usuarios.cbm");
+        pp.cargarArchivoUsuario();
+        pp.setUsuarios(u);
+        pp.escribirArchivoUsuario();
+        JOptionPane.showMessageDialog(this, "Solista guardado exitosamente");
+    }//GEN-LAST:event_bt_registrarUsuarioMouseClicked
 
     /**
      * @param args the command line arguments
@@ -274,6 +396,9 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_ingresare;
     private javax.swing.JButton bt_registrarArtista;
+    private javax.swing.JButton bt_registrarUsuario;
+    private javax.swing.JButton bt_removeArtistas;
+    private javax.swing.JButton bt_removeUsuarios;
     private javax.swing.JComboBox<String> cb_artistas;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
@@ -282,6 +407,12 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -292,15 +423,27 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JDialog jd_Artista;
     private javax.swing.JDialog jd_OpcionesRegistro;
+    private javax.swing.JDialog jd_admin;
+    private javax.swing.JDialog jd_artistasAdmin;
+    private javax.swing.JDialog jd_usuarioRegistrar;
+    private javax.swing.JProgressBar pg_registro;
+    private javax.swing.JProgressBar pg_usuario;
     private javax.swing.JTextField tf_contraArtista;
+    private javax.swing.JTextField tf_contraUsuario;
+    private javax.swing.JTextField tf_edadUsuario;
     private javax.swing.JTextField tf_generoArtista;
     private javax.swing.JTextField tf_nombreArtista;
+    private javax.swing.JTextField tf_nombreUsuario;
     private javax.swing.JPasswordField tf_passLogin;
     private javax.swing.JTextField tf_userArtista;
+    private javax.swing.JTextField tf_userUsuario;
     private javax.swing.JTextField tf_usuarioLogin;
     // End of variables declaration//GEN-END:variables
 ArrayList<Bandas> bands = new ArrayList();
     ArrayList<Solistas> solistas = new ArrayList();
 
     ArrayList<Artistas> artistas = new ArrayList();
+    administrarBarra br;
+
+    ArrayList<Usuarios> usiss = new ArrayList();
 }

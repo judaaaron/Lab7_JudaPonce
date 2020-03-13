@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 
 public class administrarBarra extends Thread {
@@ -42,17 +43,20 @@ public class administrarBarra extends Thread {
         while (vive) {
             if (avanzar) {
                 barra.setValue(barra.getValue() + 1);
-                if (barra.getValue() == 100000000) {
+                if (barra.getValue() == 5) {
                     vive = false;
                 }
 
             }
             try {
-                Thread.sleep(0);
+                Thread.sleep(1000);
+                
             } catch (Exception e) {
             }
 
         }
+         JOptionPane.showMessageDialog(null, "Ha sido guardado guardado exitosamente");
+         barra.setValue(0);
     }
 
 }
