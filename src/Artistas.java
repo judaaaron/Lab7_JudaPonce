@@ -1,11 +1,12 @@
 
-import java.util.ArrayList;
+import java.io.Serializable;
 
+public class Artistas implements Serializable {
 
-public class Artistas {
+    private String usuario, contraseña, nombre, genero;
     
-   private String usuario, contraseña, nombre,genero;
-
+    
+    private static final long SerialVersionUID = 777L;
 
     public Artistas() {
     }
@@ -53,10 +54,5 @@ public class Artistas {
     public String toString() {
         return "Artistas{" + "usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", nombre=" + nombre + ", genero=" + genero + '}';
     }
-    
-   
-   
-   
-   
-   
+
 }

@@ -1,12 +1,11 @@
 
 import java.util.ArrayList;
 
-
 public class Usuarios {
-    
-    private String usuario, password,nombre, edad;
-   private ArrayList<Eventos>events= new ArrayList();
-   private ArrayList<Artistas>artists= new ArrayList();
+
+    private String usuario, password, nombre, edad;
+    private ArrayList<Eventos> events = new ArrayList();
+    private ArrayList<Artistas> artists = new ArrayList();
 
     public Usuarios() {
     }
@@ -70,7 +69,5 @@ public class Usuarios {
     public String toString() {
         return "Usuarios{" + "usuario=" + usuario + ", password=" + password + ", nombre=" + nombre + ", edad=" + edad + '}';
     }
-   
-   
-    
+
 }
