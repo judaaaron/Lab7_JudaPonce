@@ -27,13 +27,11 @@ public class Main extends javax.swing.JFrame {
         DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(aa.getSolis().toArray());
         cb_sol.setModel(modelo2);
         
-         adminBandas yy = new adminBandas("./bandas.cbm");
+        adminBandas yy = new adminBandas("./bandas.cbm");
         yy.cargarArchivoBandas();
         DefaultComboBoxModel modelo1 = new DefaultComboBoxModel(yy.getBands().toArray());
         cb_bandas.setModel(modelo1);
         
-        
-
     }
 
     /**
@@ -106,6 +104,7 @@ public class Main extends javax.swing.JFrame {
         jd_removeSolistas = new javax.swing.JDialog();
         cb_sol = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jLabel25 = new javax.swing.JLabel();
         jd_removeBandas = new javax.swing.JDialog();
         cb_bandas = new javax.swing.JComboBox<>();
@@ -339,13 +338,21 @@ public class Main extends javax.swing.JFrame {
         cb_sol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jd_removeSolistas.getContentPane().add(cb_sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 140, 40));
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Eliminar");
         jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton6MouseClicked(evt);
             }
         });
         jd_removeSolistas.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, 50));
+
+        jButton9.setText("Regresar");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
+        jd_removeSolistas.getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, 130, 50));
         jd_removeSolistas.getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 500));
 
         jd_removeBandas.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -421,30 +428,30 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void bt_registrarArtistaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarArtistaMouseClicked
-
+        
         if (cb_artistas.getSelectedIndex() == 1) {
             int nIntegrantes = Integer.parseInt(JOptionPane.showInputDialog(" Ingrese numero de integrantes"));
             artistas.add(new Bandas(nIntegrantes, tf_userArtista.getText(), tf_contraArtista.getText(), tf_nombreArtista.getText(), tf_generoArtista.getText()));
             Bandas o = new Bandas(nIntegrantes, tf_userArtista.getText(), tf_contraArtista.getText(), tf_nombreArtista.getText(), tf_generoArtista.getText());
             bands.add(new Bandas(nIntegrantes, tf_userArtista.getText(), tf_contraArtista.getText(), tf_nombreArtista.getText(), tf_generoArtista.getText()));
-
+            
             adminBandas ap = new adminBandas("./bandas.cbm");
             ap.cargarArchivoBandas();
             ap.setBanda(o);
             ap.escribirArchivoBandas();
             br.start();
-
+            
             tf_userArtista.setText("");
             tf_contraArtista.setText("");
             tf_nombreArtista.setText("");
             tf_generoArtista.setText("");
-
+            
             jd_Artista.setVisible(false);
             cargando.pack();
             cargando.setModal(true);
             cargando.setLocationRelativeTo(this);
             cargando.setVisible(true);
-
+            
         } else if (cb_artistas.getSelectedIndex() == 2) {
             int edad = Integer.parseInt(JOptionPane.showInputDialog(" Ingrese la edad"));
             Artistas k = new Solistas(edad, tf_userArtista.getText(), tf_contraArtista.getText(), tf_nombreArtista.getText(), tf_generoArtista.getText());
@@ -459,17 +466,17 @@ public class Main extends javax.swing.JFrame {
             tf_contraArtista.setText("");
             tf_nombreArtista.setText("");
             tf_generoArtista.setText("");
-
+            
             jd_Artista.setVisible(false);
             cargando.pack();
             cargando.setModal(true);
             cargando.setLocationRelativeTo(this);
             cargando.setVisible(true);
-
+            
         } else if (cb_artistas.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Opcion incorrecta");
         }
-
+        
 
     }//GEN-LAST:event_bt_registrarArtistaMouseClicked
 
@@ -496,13 +503,13 @@ public class Main extends javax.swing.JFrame {
                 flag1 = j;
                 System.out.println(ap.getBands().get(flag1));
                 band = true;
-
+                
                 break;
             }
-
+            
         }
         for (int g = 0; g < ss.getSolis().size(); g++) {
-
+            
             if (ss.getSolis().get(g).getUsuario().equals(userr) && ss.getSolis().get(g).getContraseña().equals(pass)) {
                 flag2 = g;
                 sol = true;
@@ -512,36 +519,36 @@ public class Main extends javax.swing.JFrame {
                 jd_perfilSolista.setVisible(true);
                 break;
             }
-
+            
         }
-
+        
         for (int i = 0; i < usiss.size(); i++) {
             if (pp.getUsis().get(i).getUsuario().equals(userr) && pp.getUsis().get(i).getPassword().equals(pass)) {
                 us = true;
                 break;
             }
-
+            
         }
         if (userr.equals("leobanegas") && pass.equals("99")) {
             jd_admin.pack();
             jd_admin.setModal(true);
             jd_admin.setLocationRelativeTo(this);
             jd_admin.setVisible(true);
-
+            
         }
-
+        
         if (band == true) {
             System.out.println("entro");
             jd_perfilBanda.pack();
             jd_perfilBanda.setModal(true);
             jd_perfilBanda.setLocationRelativeTo(this);
             jd_perfilBanda.setVisible(true);
-
+            
         }
-
+        
         tf_usuarioLogin.setText("");
         tf_passLogin.setText("");
-
+        
 
     }//GEN-LAST:event_bt_ingresareMouseClicked
 
@@ -554,7 +561,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_bt_removeArtistasMouseClicked
 
     private void bt_registrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarUsuarioMouseClicked
-
+        
         int edad = Integer.parseInt(tf_edadUsuario.getText());
         Usuarios u = new Usuarios(tf_userUsuario.getText(), tf_contraUsuario.getText(), tf_nombreUsuario.getText(), tf_edadUsuario.getText());
         bands.add(new Bandas(edad, tf_userArtista.getText(), tf_contraArtista.getText(), tf_nombreArtista.getText(), tf_generoArtista.getText()));
@@ -593,13 +600,13 @@ public class Main extends javax.swing.JFrame {
         int duracion = Integer.parseInt(sp_duracion.getValue().toString());
         ap.getBands().get(flag1).getSongss().add(new Canciones(tf_nameSonh.getText(), duracion));
         JOptionPane.showMessageDialog(this, "Cancion ha sido agregada con exito");
-
+        
         ap.escribirArchivoBandas();
         jd_perfilBanda.setVisible(false);
     }//GEN-LAST:event_bt_creaconSongMouseClicked
 
     private void bt_cancionAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cancionAddMouseClicked
-
+        
         jd_perfilBanda.setVisible(false);
         jd_creacionCancion.pack();
         jd_creacionCancion.setModal(true);
@@ -623,11 +630,11 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         adminSolistas ap = new adminSolistas("./solistas.cbm");
-
+        
         ap.cargarArchivoSolistas();
         ap.getSolis().remove(cb_sol.getSelectedIndex());
         ap.escribirArchivoSolistas();
-
+        
         DefaultComboBoxModel modelo = new DefaultComboBoxModel(ap.getSolis().toArray());
         cb_sol.setModel(modelo);
         JOptionPane.showMessageDialog(null, "Solista eliminado exitosamente");
@@ -646,7 +653,7 @@ public class Main extends javax.swing.JFrame {
         xx.cargarArchivoBandas();
         xx.getBands().remove(cb_bandas.getSelectedIndex());
         xx.escribirArchivoBandas();
-
+        
         DefaultComboBoxModel modelo = new DefaultComboBoxModel(xx.getBands().toArray());
         cb_bandas.setModel(modelo);
         JOptionPane.showMessageDialog(null, "Banda eliminado exitosamente");
@@ -654,12 +661,16 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
-       jd_removeBandas.setVisible(false);
+        jd_removeBandas.setVisible(false);
     }//GEN-LAST:event_jButton8MouseClicked
 
     private void bt_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_exitMouseClicked
-       System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_bt_exitMouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        jd_removeSolistas.setVisible(false);
+    }//GEN-LAST:event_jButton9MouseClicked
 
     /**
      * @param args the command line arguments
@@ -721,6 +732,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -775,11 +787,11 @@ public class Main extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 ArrayList<Bandas> bands = new ArrayList();
     ArrayList<Solistas> solistas = new ArrayList();
-
+    
     ArrayList<Artistas> artistas = new ArrayList();
     administrarBarra br;
     administrarBarra b2;
     int flag1, flag2;
-
+    
     ArrayList<Usuarios> usiss = new ArrayList();
 }
