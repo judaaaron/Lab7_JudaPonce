@@ -1,11 +1,13 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Usuarios {
+public class Usuarios implements Serializable {
 
     private String usuario, password, nombre, edad;
     private ArrayList<Eventos> events = new ArrayList();
     private ArrayList<Artistas> artists = new ArrayList();
+    private static final long SerialVersionUID = 778L;
 
     public Usuarios() {
     }

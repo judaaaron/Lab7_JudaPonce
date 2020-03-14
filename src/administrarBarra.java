@@ -55,6 +55,7 @@ public class administrarBarra extends Thread {
             }
 
         }
+        
          JOptionPane.showMessageDialog(null, "Ha sido guardado guardado exitosamente");
          barra.setValue(0);
     }

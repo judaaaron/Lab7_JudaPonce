@@ -1,5 +1,8 @@
 
-public class Canciones {
+import java.io.Serializable;
+
+public class Canciones implements Serializable {
+
     private String nombre;
     private int segundos;
 
@@ -31,7 +34,5 @@ public class Canciones {
     public String toString() {
         return "Canciones{" + "nombre=" + nombre + ", segundos=" + segundos + '}';
     }
-    
-    
-    
+
 }

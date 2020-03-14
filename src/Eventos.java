@@ -1,11 +1,12 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
+public class Eventos implements Serializable {
 
-public class Eventos {
-    
-    private String fecha,ciudad,lugar,capacidad;
+    private String fecha, ciudad, lugar, capacidad;
     private ArrayList<Canciones> songi = new ArrayList();
+    private static final long SerialVersionUID = 779L;
 
     public Eventos() {
     }
@@ -61,7 +62,5 @@ public class Eventos {
     public String toString() {
         return "Eventos{" + "fecha=" + fecha + ", ciudad=" + ciudad + ", lugar=" + lugar + ", capacidad=" + capacidad + '}';
     }
-    
-    
-    
+
 }
