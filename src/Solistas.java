@@ -33,7 +33,7 @@ public class Solistas extends Artistas {
 
     @Override
     public String toString() {
-        return super.toString() + "Solistas" + "edad=" + edad;
+        return super.toString();
     }
 
 }

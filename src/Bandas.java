@@ -33,7 +33,7 @@ public class Bandas extends Artistas {
 
     @Override
     public String toString() {
-        return super.toString() + "Bandas" + "nIntegrantes=" + nIntegrantes;
+        return super.toString();
     }
 
 }

@@ -4,8 +4,7 @@ import java.io.Serializable;
 public class Artistas implements Serializable {
 
     private String usuario, contraseña, nombre, genero;
-    
-    
+
     private static final long SerialVersionUID = 777L;
 
     public Artistas() {
@@ -52,7 +51,7 @@ public class Artistas implements Serializable {
 
     @Override
     public String toString() {
-        return "Artistas{" + "usuario=" + usuario + ", contrase\u00f1a=" + contraseña + ", nombre=" + nombre + ", genero=" + genero + '}';
+        return nombre;
     }
 
 }

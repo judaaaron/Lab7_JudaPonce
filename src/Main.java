@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,6 +22,17 @@ public class Main extends javax.swing.JFrame {
         setTitle(" Laboratorio 7");
         this.setLocationRelativeTo(null);
         br = new administrarBarra(pg_registro);
+        adminSolistas aa = new adminSolistas("./solistas.cbm");
+        aa.cargarArchivoSolistas();
+        DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(aa.getSolis().toArray());
+        cb_sol.setModel(modelo2);
+        
+         adminBandas yy = new adminBandas("./bandas.cbm");
+        yy.cargarArchivoBandas();
+        DefaultComboBoxModel modelo1 = new DefaultComboBoxModel(yy.getBands().toArray());
+        cb_bandas.setModel(modelo1);
+        
+        
 
     }
 
@@ -55,6 +67,7 @@ public class Main extends javax.swing.JFrame {
         jd_admin = new javax.swing.JDialog();
         bt_removeArtistas = new javax.swing.JButton();
         bt_removeUsuarios = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jd_artistasAdmin = new javax.swing.JDialog();
         jd_usuarioRegistrar = new javax.swing.JDialog();
@@ -77,6 +90,12 @@ public class Main extends javax.swing.JFrame {
         bt_CrearEvento = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jd_perfilSolista = new javax.swing.JDialog();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        bt_crearCancion = new javax.swing.JButton();
+        tf_cancionNAame = new javax.swing.JTextField();
+        sp_duracion1 = new javax.swing.JSpinner();
+        jLabel22 = new javax.swing.JLabel();
         jd_creacionCancion = new javax.swing.JDialog();
         jLabel20 = new javax.swing.JLabel();
         sp_duracion = new javax.swing.JSpinner();
@@ -84,12 +103,22 @@ public class Main extends javax.swing.JFrame {
         tf_nameSonh = new javax.swing.JTextField();
         bt_creaconSong = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
+        jd_removeSolistas = new javax.swing.JDialog();
+        cb_sol = new javax.swing.JComboBox<>();
+        jButton6 = new javax.swing.JButton();
+        jLabel25 = new javax.swing.JLabel();
+        jd_removeBandas = new javax.swing.JDialog();
+        cb_bandas = new javax.swing.JComboBox<>();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
         bt_ingresare = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tf_usuarioLogin = new javax.swing.JTextField();
         tf_passLogin = new javax.swing.JPasswordField();
         jLabel4 = new javax.swing.JLabel();
+        bt_exit = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jd_OpcionesRegistro.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -162,16 +191,24 @@ public class Main extends javax.swing.JFrame {
 
         jd_admin.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        bt_removeArtistas.setText("Eliminar Artistas");
+        bt_removeArtistas.setText("Eliminar Bandas");
         bt_removeArtistas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bt_removeArtistasMouseClicked(evt);
             }
         });
-        jd_admin.getContentPane().add(bt_removeArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, -1, -1));
+        jd_admin.getContentPane().add(bt_removeArtistas, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 140, 160, 30));
 
         bt_removeUsuarios.setText("Eliminar Usuarios");
-        jd_admin.getContentPane().add(bt_removeUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
+        jd_admin.getContentPane().add(bt_removeUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 170, 30));
+
+        jButton5.setText("Eliminar solistas");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+        jd_admin.getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 140, 120, 30));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
         jd_admin.getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 430));
@@ -244,13 +281,37 @@ public class Main extends javax.swing.JFrame {
         });
         jd_perfilBanda.getContentPane().add(bt_cancionAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, 140, 40));
 
-        bt_CrearEvento.setText("Crear Evento");
+        bt_CrearEvento.setText("Regresar");
+        bt_CrearEvento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_CrearEventoMouseClicked(evt);
+            }
+        });
         jd_perfilBanda.getContentPane().add(bt_CrearEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 130, 40));
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
         jd_perfilBanda.getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 360));
 
         jd_perfilSolista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel23.setText("Nombre de la cancion");
+        jd_perfilSolista.getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 150, 20));
+
+        jLabel24.setText("Duracion");
+        jd_perfilSolista.getContentPane().add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, 90, 20));
+
+        bt_crearCancion.setText("Crear cancion");
+        bt_crearCancion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_crearCancionMouseClicked(evt);
+            }
+        });
+        jd_perfilSolista.getContentPane().add(bt_crearCancion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+        jd_perfilSolista.getContentPane().add(tf_cancionNAame, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 140, 30));
+        jd_perfilSolista.getContentPane().add(sp_duracion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 70, 30));
+
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
+        jd_perfilSolista.getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 470));
 
         jd_creacionCancion.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -272,6 +333,42 @@ public class Main extends javax.swing.JFrame {
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
         jd_creacionCancion.getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 400));
+
+        jd_removeSolistas.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cb_sol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jd_removeSolistas.getContentPane().add(cb_sol, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 80, 140, 40));
+
+        jButton6.setText("jButton6");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
+        jd_removeSolistas.getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, 140, 50));
+        jd_removeSolistas.getContentPane().add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 950, 500));
+
+        jd_removeBandas.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cb_bandas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jd_removeBandas.getContentPane().add(cb_bandas, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 100, 40));
+
+        jButton7.setText("Eliminar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jd_removeBandas.getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 130, 40));
+
+        jButton8.setText("Regresar");
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton8MouseClicked(evt);
+            }
+        });
+        jd_removeBandas.getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 110, 40));
+        jd_removeBandas.getContentPane().add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 420));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -301,6 +398,14 @@ public class Main extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 210, 20));
+
+        bt_exit.setText("Salir");
+        bt_exit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_exitMouseClicked(evt);
+            }
+        });
+        getContentPane().add(bt_exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 100, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/white2.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 450));
@@ -385,12 +490,13 @@ public class Main extends javax.swing.JFrame {
         ss.cargarArchivoSolistas();
         adminUsuarios pp = new adminUsuarios("./usuarios.cbm");
         pp.cargarArchivoUsuario();
-        boolean band = false;
+        boolean band = false, sol = false, us = false;
         for (int j = 0; j < ap.getBands().size(); j++) {
             if (ap.getBands().get(j).getUsuario().equals(userr) && ap.getBands().get(j).getContraseña().equals(pass)) {
                 flag1 = j;
                 System.out.println(ap.getBands().get(flag1));
                 band = true;
+
                 break;
             }
 
@@ -399,18 +505,19 @@ public class Main extends javax.swing.JFrame {
 
             if (ss.getSolis().get(g).getUsuario().equals(userr) && ss.getSolis().get(g).getContraseña().equals(pass)) {
                 flag2 = g;
-                System.out.println("entro");
+                sol = true;
                 jd_perfilSolista.pack();
                 jd_perfilSolista.setModal(true);
                 jd_perfilSolista.setLocationRelativeTo(this);
                 jd_perfilSolista.setVisible(true);
                 break;
             }
+
         }
 
         for (int i = 0; i < usiss.size(); i++) {
             if (pp.getUsis().get(i).getUsuario().equals(userr) && pp.getUsis().get(i).getPassword().equals(pass)) {
-                JOptionPane.showMessageDialog(this, " Es un usuario");
+                us = true;
                 break;
             }
 
@@ -432,15 +539,18 @@ public class Main extends javax.swing.JFrame {
 
         }
 
+        tf_usuarioLogin.setText("");
+        tf_passLogin.setText("");
+
 
     }//GEN-LAST:event_bt_ingresareMouseClicked
 
     private void bt_removeArtistasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_removeArtistasMouseClicked
         jd_admin.setVisible(false);
-        jd_artistasAdmin.pack();
-        jd_artistasAdmin.setModal(true);
-        jd_artistasAdmin.setLocationRelativeTo(this);
-        jd_artistasAdmin.setVisible(true);
+        jd_removeBandas.pack();
+        jd_removeBandas.setModal(true);
+        jd_removeBandas.setLocationRelativeTo(this);
+        jd_removeBandas.setVisible(true);
     }//GEN-LAST:event_bt_removeArtistasMouseClicked
 
     private void bt_registrarUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_registrarUsuarioMouseClicked
@@ -481,12 +591,11 @@ public class Main extends javax.swing.JFrame {
         adminBandas ap = new adminBandas("./bandas.cbm");
         ap.cargarArchivoBandas();
         int duracion = Integer.parseInt(sp_duracion.getValue().toString());
-        System.out.println(ap.getBands().get(flag1).getSongss());
         ap.getBands().get(flag1).getSongss().add(new Canciones(tf_nameSonh.getText(), duracion));
-        System.out.println(ap.getBands().get(flag1).getSongss());
         JOptionPane.showMessageDialog(this, "Cancion ha sido agregada con exito");
-        //  System.out.println(ap.getBands().get(flag1).getSongss());
+
         ap.escribirArchivoBandas();
+        jd_perfilBanda.setVisible(false);
     }//GEN-LAST:event_bt_creaconSongMouseClicked
 
     private void bt_cancionAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_cancionAddMouseClicked
@@ -497,6 +606,60 @@ public class Main extends javax.swing.JFrame {
         jd_creacionCancion.setLocationRelativeTo(this);
         jd_creacionCancion.setVisible(true);
     }//GEN-LAST:event_bt_cancionAddMouseClicked
+
+    private void bt_crearCancionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_crearCancionMouseClicked
+        adminSolistas ss = new adminSolistas("./solistas.cbm");
+        ss.cargarArchivoSolistas();
+        int duracion = Integer.parseInt(sp_duracion1.getValue().toString());
+        ss.getSolis().get(flag2).getSongs().add(new Canciones(tf_cancionNAame.getText(), duracion));
+        JOptionPane.showMessageDialog(this, "Cancion ha sido agregada con exito");
+        ss.escribirArchivoSolistas();
+        jd_perfilSolista.setVisible(false);
+    }//GEN-LAST:event_bt_crearCancionMouseClicked
+
+    private void bt_CrearEventoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_CrearEventoMouseClicked
+        jd_perfilBanda.setVisible(false);
+    }//GEN-LAST:event_bt_CrearEventoMouseClicked
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        adminSolistas ap = new adminSolistas("./solistas.cbm");
+
+        ap.cargarArchivoSolistas();
+        ap.getSolis().remove(cb_sol.getSelectedIndex());
+        ap.escribirArchivoSolistas();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(ap.getSolis().toArray());
+        cb_sol.setModel(modelo);
+        JOptionPane.showMessageDialog(null, "Solista eliminado exitosamente");
+    }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        jd_admin.setVisible(false);
+        jd_removeSolistas.pack();
+        jd_removeSolistas.setModal(true);
+        jd_removeSolistas.setLocationRelativeTo(this);
+        jd_removeSolistas.setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        adminBandas xx = new adminBandas("./bandas.cbm");
+        xx.cargarArchivoBandas();
+        xx.getBands().remove(cb_bandas.getSelectedIndex());
+        xx.escribirArchivoBandas();
+
+        DefaultComboBoxModel modelo = new DefaultComboBoxModel(xx.getBands().toArray());
+        cb_bandas.setModel(modelo);
+        JOptionPane.showMessageDialog(null, "Banda eliminado exitosamente");
+
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseClicked
+       jd_removeBandas.setVisible(false);
+    }//GEN-LAST:event_jButton8MouseClicked
+
+    private void bt_exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_exitMouseClicked
+       System.exit(0);
+    }//GEN-LAST:event_bt_exitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -537,6 +700,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton bt_CrearEvento;
     private javax.swing.JButton bt_cancionAdd;
     private javax.swing.JButton bt_creaconSong;
+    private javax.swing.JButton bt_crearCancion;
+    private javax.swing.JButton bt_exit;
     private javax.swing.JButton bt_ingresare;
     private javax.swing.JButton bt_ok;
     private javax.swing.JButton bt_registrarArtista;
@@ -545,11 +710,17 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton bt_removeUsuarios;
     private javax.swing.JDialog cargando;
     private javax.swing.JComboBox<String> cb_artistas;
+    private javax.swing.JComboBox<String> cb_bandas;
+    private javax.swing.JComboBox<String> cb_sol;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -564,6 +735,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -578,9 +754,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JDialog jd_creacionCancion;
     private javax.swing.JDialog jd_perfilBanda;
     private javax.swing.JDialog jd_perfilSolista;
+    private javax.swing.JDialog jd_removeBandas;
+    private javax.swing.JDialog jd_removeSolistas;
     private javax.swing.JDialog jd_usuarioRegistrar;
     private javax.swing.JProgressBar pg_registro;
     private javax.swing.JSpinner sp_duracion;
+    private javax.swing.JSpinner sp_duracion1;
+    private javax.swing.JTextField tf_cancionNAame;
     private javax.swing.JTextField tf_contraArtista;
     private javax.swing.JTextField tf_contraUsuario;
     private javax.swing.JTextField tf_edadUsuario;
